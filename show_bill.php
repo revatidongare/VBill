@@ -14,7 +14,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
-      <div id="content">
+      <div id="content" class="maincontent">
 
         <!-- Topbar -->
         
@@ -22,7 +22,27 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container-fluid actualcontent mb-5">
+            
+<div class="col-lg-12">
+  <table class="table table-borderless">
+                  <tbody>
+                    <thead>
+                    <tr>
+                      <td align="center"><img src="img/logo.png"> <br>Managed By RAS Hospitalities
+                    <br><br>
+                  GST NO: 27AAPFR9534F1ZP PAN NO:AAPFR9534F</td>
+                      
+                      <td><i class="fa fa-map-marker" aria-hidden="true" style="padding-right: 1.5rem;"></i>Ganesh Corner, Opp Kumar Resort, <br>Old Mumbai Pune Highway,Lonavla<br>
+              <i class="fa fa-phone" aria-hidden="true" style="padding-right: 1.5rem;"></i>Tel:02114-270055 / 8380004198 / <br>8380096375<br>
+              <i class="fa fa-envelope" aria-hidden="true" style="padding-right: 1.5rem;"></i> krushnairesort@gmail.com<br>
+              <i class="fa fa-globe" aria-hidden="true" style="padding-right: 1.5rem;"></i>www.krushnairesort.com </td>
+                    </tr>
+                  </thead>
+                  </tbody>
+                </table>
+</div>
+<!--
           <div class="row">
             <div class="col-lg-7">
                 <center>
@@ -39,6 +59,7 @@
               <i class="fa fa-globe" aria-hidden="true" style="padding-right: 1.5rem;"></i>www.krushnairesort.com
             </div>
          </div>
+-->
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"></h1>
           <p class="mb-4"></p>

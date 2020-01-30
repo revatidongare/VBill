@@ -6,14 +6,42 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
 
+    <!-- Sidebar -->
+    
+    <!-- End of Sidebar -->
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
-      <div id="content">
+      <div id="content" class="maincontent">
+
+        <!-- Topbar -->
+        
+        <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container-fluid actualcontent mb-5">
+            
+<div class="col-lg-12">
+  <table class="table table-borderless">
+                  <tbody>
+                    <thead>
+                    <tr>
+                      <td align="center"><img src="img/logo.png"> <br>Managed By RAS Hospitalities
+                    <br><br>
+                  GST NO: 27AAPFR9534F1ZP PAN NO:AAPFR9534F</td>
+                      
+                      <td><i class="fa fa-map-marker" aria-hidden="true" style="padding-right: 1.5rem;"></i>Ganesh Corner, Opp Kumar Resort, <br>Old Mumbai Pune Highway,Lonavla<br>
+              <i class="fa fa-phone" aria-hidden="true" style="padding-right: 1.5rem;"></i>Tel:02114-270055 / 8380004198 / <br>8380096375<br>
+              <i class="fa fa-envelope" aria-hidden="true" style="padding-right: 1.5rem;"></i> krushnairesort@gmail.com<br>
+              <i class="fa fa-globe" aria-hidden="true" style="padding-right: 1.5rem;"></i>www.krushnairesort.com </td>
+                    </tr>
+                  </thead>
+                  </tbody>
+                </table>
+</div>
+<!--
           <div class="row">
             <div class="col-lg-7">
                 <center>
@@ -30,6 +58,7 @@
               <i class="fa fa-globe" aria-hidden="true" style="padding-right: 1.5rem;"></i>www.krushnairesort.com
             </div>
          </div>
+-->
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800"></h1>
           <p class="mb-4"></p>
@@ -317,21 +346,23 @@
 
         </div>
         <!-- /.container-fluid -->
-<!-- 
+
+<!--
       <div class="col-xl-6 col-md-2 mb-4 text-right">
                     <a  href= "invoice.php" class="btn btn-danger" target="_blank"><i class="fas fa-print "></i> Print Invoice</a>
                  </div>
-      </div> -->
+      </div>
+-->
       
-      <script>
+       <script>
         window.print();
       </script>
-     
+      
   
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      
+
       <!-- End of Footer -->
 
     </div>
@@ -341,29 +372,10 @@
   <!-- End of Page Wrapper -->
 
   <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+  
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
+ 
   <?php include 'includes/scripts.php'?>
 </body>
 
