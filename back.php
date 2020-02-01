@@ -1,5 +1,5 @@
 <?php
-	$con = mysqli_connect("199.79.62.23","citypalace_vbill","p!2N6h9w","citypalace_vbilling");
+	$con = mysqli_connect("localhost","root","","vbill");
 	if(isset($_POST['login'])){
 		
 		$email = $_POST['email'];
@@ -15,7 +15,7 @@
 				$admin_name = $row['name'];
 				session_start();
 				$_SESSION['admin'] = $admin_name;
-				header('location:manageuser.php');
+				header('location:index.php');
 			}
 			else{
 				header('location:login.php?q=1');

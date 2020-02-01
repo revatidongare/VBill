@@ -1,4 +1,10 @@
+<?php
+  session_start();
 
+  if(!isset($_SESSION['admin'])){
+    header('location:login.php');
+  }
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +38,7 @@
               <!-- Page Heading -->
               <div class="row mt-3">
                  <div class="col-xl-10 col-md-8 mb-4 mx-auto">
-                   <p class="colortheme" style="letter-spacing: 3px;">MANAGE GUESTS</p>
+                   <p class="colortheme" style="letter-spacing: 3px;">MANAGE BILLS</p>
                  </div>
 <!--                  <div class="col-xl-2 col-md-2 mb-4 ">
                     <a href="#" class="btn btn-theme-outline" data-toggle="modal" data-target="#add_branch">+ Add Guest</a>

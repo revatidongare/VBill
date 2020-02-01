@@ -1,3 +1,10 @@
+<?php
+  session_start();
+
+  if(!isset($_SESSION['admin'])){
+    header('location:login.php');
+  }
+ ?>
 <?php if(isset($_GET['q'])){
     $Bill_no = $_GET['q'];
   }
@@ -91,7 +98,7 @@
                      
                       <th colspan="2">Check-in:<?php   echo $row['Check_In'];?> <->
                       Check-Out: <?php   echo $row['Check_Out'];?></th>
-                      <th colspan="2">10:14</th>
+                      <th colspan="2"></th>
                     </tr>
                   </thead>
                   
@@ -101,7 +108,7 @@
                       <td colspan="4"><?php   echo $row['Name'];?></td>
                       <!-- <td></td>
                       <td></td> -->
-                      <td >RYE</td>
+                      <td colspan="2">RYE</td>
                       <!-- <td></td> -->
                     </tr>
                     <tr>
@@ -173,80 +180,57 @@
                     </tr>
                   </tfoot> -->
                 
+                    <?php
+                                      $query = "SELECT * FROM `table 1` WHERE `Billno` = '$Bill_no' ";
+                                      $res = mysqli_query($con,$query);
+                                      while ($row = mysqli_fetch_array($res)) {
+                                    ?>
                   <tbody>
                     <tr>
                       <td>01/DEC'19</td>
                       <td>TARIF</td>
-                      <td>3199</td>
-                      <td>ROOM TARIF Px.4</td>
-                      <td>3125</td>
+                        <td>3125</td>                                        
+                      <td>ROOM TARIF</td>
+                       <?php if(empty($row['ROOM_TARIFF'])){?>
+                          <td><?php echo $row['ROOM_TARIFF1']; ?></td>
+                        <?php }
+                        else{?>
+                           <td><?php echo $row['ROOM_TARIFF']; ?></td>
+                        <?php }
+                        ?>
                       <td></td>
                     </tr>
-                    <tr>
-                      <td></td>
-                      <td>TARIF</td>
-                      <td>3201</td>
-                      <td>ROOM TARIF Px.3</td>
-                      <td>3125</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td>TARIF</td>
-                      <td>3202</td>
-                      <td>ROOM TARIF Px.3</td>
-                      <td>3125</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td>TARIF</td>
-                      <td>3200</td>
-                      <td>ROOM TARIF Px.3</td>
-                      <td>3125</td>
-                      <td></td>
-                    </tr>
+
+                    <?php if(empty($row['SGST_6%'])){?>
+                      <?php }
+                        else{?>
                     <tr>
                       <td></td>
                       <td>SGST</td>
                       <td>3197</td>
                       <td>SGST on TARIF 6%</td>
-                      <td>187.5</td>
+                          <td><?php echo $row['SGST_6%']; ?></td>
+                        <?php }
+                        ?>
+                      
                       <td></td>
                     </tr>
-                    <tr>
-                      <td></td>
-                      <td>SGST</td>
-                      <td>3200</td>
-                      <td>SGST on TARIF 6%</td>
-                      <td>187.5</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td>SGST</td>
-                      <td>3198</td>
-                      <td>SGST on TARIF 6%</td>
-                      <td>187.5</td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td>SGST</td>
-                      <td>3199</td>
-                      <td>SGST on TARIF 6%</td>
-                      <td>187.5</td>
-                      <td></td>
-                    </tr>
+
+                    <?php if(empty($row['CGST_6%'])){?>
+                      <?php }
+                        else{?>
                     <tr>
                       <td></td>
                       <td>CGST</td>
                       <td>3198</td>
                       <td>CGST on TARIF 6%</td>
-                      <td>187.5</td>
+
+                      <td><?php echo $row['CGST_6%']; ?></td>
                       <td></td>
                     </tr>
-                    <tr>
+                  <?php } 
+                }?>
+                    <!--<tr>
                       <td></td>
                       <td>CGST</td>
                       <td>3200</td>
@@ -269,15 +253,19 @@
                       <td>CGST on TARIF 6%</td>
                       <td>187.5</td>
                       <td></td>
-                    </tr>
-                    
+                    </tr>-->
+                    <?php
+                                      $query = "SELECT * FROM `table 1` WHERE `Billno` = '$Bill_no' ";
+                                      $res = mysqli_query($con,$query);
+                                       $row = mysqli_fetch_array($res);
+                                    ?>
                     <tr>
                       <td></td>
                       <td colspan="4">Total</td>
                       <!-- <td></td> -->
                       <!-- <td> </td>
                       <td></td> -->
-                      <td>14000</td>
+                      <td><?php   echo $row['TOTAL'];?></td>
                     </tr>
                     <tr>
                       <td colspan="4">Bill Amount: </td>
