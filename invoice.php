@@ -1,3 +1,13 @@
+<?php if(isset($_GET['q'])){
+    $Bill_no = $_GET['q'];
+  }
+  else{
+    header('location:show_bill.php');
+  }?>
+<?php if(isset($_POST['billno'])){
+    $Bill_no = $_POST['billno'];
+  }?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php';?>
@@ -14,15 +24,20 @@
     <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
-      <div id="content" class="maincontent">
+      <div id="content">
 
         <!-- Topbar -->
         
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid actualcontent mb-5">
-            
+        <div>
+            <?php   
+          include 'config.php';
+          $query = "SELECT * FROM `Table 1` WHERE `Billno` = '$Bill_no'";
+          $res = mysqli_query($con,$query);
+          $row = mysqli_fetch_array($res);
+     ?>
 <div class="col-lg-12">
   <table class="table table-borderless">
                   <tbody>
@@ -71,11 +86,11 @@
                   <thead>
                     <tr>
                       <th>Bill No.</th>
-                      <th colspan="2">1991</th>
+                      <th colspan="2"><?php   echo $row['Billno'];?></th>
                       <!-- <th></th> -->
                      
-                      <th colspan="2">Check-in:01/Dec/2019 <->
-                      Check-Out: 02/Dec2019</th>
+                      <th colspan="2">Check-in:<?php   echo $row['Check_In'];?> <->
+                      Check-Out: <?php   echo $row['Check_Out'];?></th>
                       <th colspan="2">10:14</th>
                     </tr>
                   </thead>
@@ -83,7 +98,7 @@
                   <tbody>
                     <tr>
                       <td>Name:</td>
-                      <td colspan="4">Mr. Ajay Pandey</td>
+                      <td colspan="4"><?php   echo $row['Name'];?></td>
                       <!-- <td></td>
                       <td></td> -->
                       <td >RYE</td>
@@ -91,15 +106,15 @@
                     </tr>
                     <tr>
                       <td>Company:</td>
-                      <td colspan="4"></td>
+                      <td colspan="4"><?php   echo $row['Company_Name'];?></td>
                       <!-- <td></td>
                       <td></td> -->
                       <td>Room No.</td>
-                      <td>101/102/103</td>
+                      <td><?php   echo $row['Room_No.'];?></td>
                     </tr>
                     <tr>
                       <td>Cust GST ID:</td>
-                      <td colspan="4"></td>
+                      <td colspan="4"><?php   echo $row['GST_NO'];?></td>
                       <!-- <td>3202</td>
                       <td>ROOM TARIF Px.3</td> -->
                       <td></td>
@@ -127,13 +142,13 @@
                       <!-- <td></td>
                       <td></td> -->
                       <td>Reg No.</td>
-                      <td>1935</td>
+                      <td><?php   echo $row['Reg_No'];?></td>
                     </tr>
                   </tbody>
                 </table>
             </div>
 
-            <div class="card-body">
+            <div class="card-body" style="padding-top: 0;">
               <div class="table-responsive">
                 <table class="table table-bordered" id="Table" width="100%" cellspacing="0">
                   <thead>
@@ -157,6 +172,7 @@
                       <th>Salary</th>
                     </tr>
                   </tfoot> -->
+                
                   <tbody>
                     <tr>
                       <td>01/DEC'19</td>
@@ -268,8 +284,8 @@
                       <!-- <td></td>
                       <td></td>
                       <td></td> -->
-                      <td>14000</td>
-                      <td>14000</td>
+                      <td><?php   echo $row['TOTAL'];?></td>
+                      <td></td>
                     </tr>
 
                     <tr>

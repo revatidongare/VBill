@@ -8,7 +8,12 @@
            <a class="btn btn-link rounded-circle mr-3 barsshow colortheme" href="index.php">
             Home
           </a>
-
+           
+           <h5 style="padding-left: 5rem;">Enter Bill NO. to Search And Press Enter</h5>
+           <form action="show_bill.php" method="post" style="padding-left: 2rem;">
+            <input type="text" name="billno"/>
+            <!-- <button type="button" class="btn btn-secondary">Submit</button> -->
+            </form>
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">  
             

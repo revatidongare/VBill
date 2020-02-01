@@ -1,3 +1,10 @@
+<?php if(isset($_GET['q'])){
+    $Bill_no = $_GET['q'];
+  }?>
+<?php if(isset($_POST['billno'])){
+    $Bill_no = $_POST['billno'];
+  }?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php';?>
@@ -22,9 +29,16 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid actualcontent mb-5">
+        <div class="container-fluid actualcontent mb-5">     
             
-<div class="col-lg-12">
+            <!-- <button type="button" class="btn btn-secondary">Submit</button> -->
+          <div class="col-lg-12">
+  <?php   
+          include 'config.php';
+          $query = "SELECT * FROM `Table 1` WHERE `Billno` = '$Bill_no'";
+          $res = mysqli_query($con,$query);
+          $row = mysqli_fetch_array($res);
+     ?>
   <table class="table table-borderless">
                   <tbody>
                     <thead>
@@ -72,35 +86,35 @@
                   <thead>
                     <tr>
                       <th>Bill No.</th>
-                      <th colspan="2">1991</th>
+                      <th colspan="2"><?php   echo $row['Billno'];?></th>
                       <!-- <th></th> -->
                      
-                      <th colspan="2">Check-in:01/Dec/2019 <->
-                      Check-Out: 02/Dec2019</th>
-                      <th colspan="2">10:14</th>
+                      <th colspan="2">Check-in:<?php   echo $row['Check_In'];?> <->
+                      Check-Out: <?php   echo $row['Check_Out'];?></th>
+                      <th colspan="2"></th>
                     </tr>
                   </thead>
                   
                   <tbody>
                     <tr>
                       <td>Name:</td>
-                      <td colspan="4">Mr. Ajay Pandey</td>
+                      <td colspan="4"><?php   echo $row['Name'];?></td>
                       <!-- <td></td>
                       <td></td> -->
-                      <td >RYE</td>
+                      <td colspan="2">RYE</td>
                       <!-- <td></td> -->
                     </tr>
                     <tr>
                       <td>Company:</td>
-                      <td colspan="4"></td>
+                      <td colspan="4"><?php   echo $row['Company_Name'];?></td>
                       <!-- <td></td>
                       <td></td> -->
                       <td>Room No.</td>
-                      <td>101/102/103</td>
+                      <td><?php   echo $row['Room_No.'];?></td>
                     </tr>
                     <tr>
                       <td>Cust GST ID:</td>
-                      <td colspan="4"></td>
+                      <td colspan="4"><?php   echo $row['GST_NO'];?></td>
                       <!-- <td>3202</td>
                       <td>ROOM TARIF Px.3</td> -->
                       <td></td>
@@ -119,8 +133,8 @@
                       <td colspan="4"></td>
                       <!-- <td></td>
                       <td></td> -->
-                      <td>Room Rt.5</td>
-                      <td>5500</td>
+                      <td>Room Rt</td>
+                      <td><?php   echo $row[' Per_day_tariff'];?></td>
                     </tr>
                     <tr>
                       <td>City:</td>
@@ -128,13 +142,13 @@
                       <!-- <td></td>
                       <td></td> -->
                       <td>Reg No.</td>
-                      <td>1935</td>
+                      <td><?php   echo $row['Reg_No'];?></td>
                     </tr>
                   </tbody>
                 </table>
             </div>
 
-            <div class="card-body">
+            <div class="card-body" style="padding-top: 0;">
               <div class="table-responsive">
                 <table class="table table-bordered" id="Table" width="100%" cellspacing="0">
                   <thead>
@@ -158,16 +172,28 @@
                       <th>Salary</th>
                     </tr>
                   </tfoot> -->
+                    <?php
+                                      $query = "SELECT * FROM `table 1` WHERE `Billno` = '$Bill_no' ";
+                                      $res = mysqli_query($con,$query);
+                                      while ($row = mysqli_fetch_array($res)) {
+                                    ?>
                   <tbody>
                     <tr>
                       <td>01/DEC'19</td>
                       <td>TARIF</td>
-                      <td>3199</td>
-                      <td>ROOM TARIF Px.4</td>
-                      <td>3125</td>
+                        <td>3125</td>                                        
+                      <td>ROOM TARIF</td>
+                       <?php if(empty($row['ROOM_TARIFF'])){?>
+                          <td><?php echo $row['ROOM_TARIFF1']; ?></td>
+                        <?php }
+                        else{?>
+                           <td><?php echo $row['ROOM_TARIFF']; ?></td>
+                        <?php }
+                      }
+                        ?>
                       <td></td>
                     </tr>
-                    <tr>
+                    <!--<tr>
                       <td></td>
                       <td>TARIF</td>
                       <td>3201</td>
@@ -262,15 +288,15 @@
                       <!-- <td></td> -->
                       <!-- <td> </td>
                       <td></td> -->
-                      <td>14000</td>
+                      <td><?php   echo $row['TOTAL'];?></td>
                     </tr>
                     <tr>
                       <td colspan="4">Bill Amount: </td>
                       <!-- <td></td>
                       <td></td>
                       <td></td> -->
-                      <td>14000</td>
-                      <td>14000</td>
+                      <td><?php   echo $row['TOTAL'];?></td>
+                      <td></td>
                     </tr>
 
                     <tr>
@@ -313,8 +339,8 @@
                     </tr>
                     <tr>
                       <th>12500</th>
-                      <th>750</th>
-                      <th>750</th>
+                      <th><?php   echo $row['SGST_6%'];?></th>
+                      <th><?php   echo $row['CGST_6%'];?></th>
                       <th>-14000 </th>
                     </tr>
                   </thead>
@@ -349,7 +375,8 @@
         <!-- /.container-fluid -->
 
       <div class="col-xl-6 col-md-2 mb-4 text-right">
-                    <a  href= "invoice.php" class="btn btn-danger" target="_blank"><i class="fas fa-print "></i> Print Invoice</a>
+                    
+                    <a  href= "invoice.php?q=<?php echo $row['Billno'];?>" class="btn btn-danger" target="_blank"><i class="fas fa-print "></i> Print Invoice</a>
                  </div>
       </div>
       

@@ -118,7 +118,7 @@
                                     ?>
                                     <tr>
                                       <td><?php echo $row['Reg_No'];?></td>
-                                      <td><?php echo $row['Billno']; ?></td>
+                                      <td><a href="show_bill.php?q=<?php echo $row['Billno'];?>"><?php echo $row['Billno'];?></a></td>
                                       <td><?php echo $row['Room_No.']; ?></td>
                                       <td><?php echo $row['Name']; ?></td>
                                       <td><?php echo $row['Company_Name']; ?></td>
